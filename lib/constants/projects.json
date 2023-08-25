@@ -1,0 +1,36 @@
+{
+    "projects": [
+        {
+            "title": "NewsDash",
+            "description": "NewsDash is a fast and reliable Python wrapper for the News API that simplifies accessing the latest news articles from around the world.",
+            "cover": "https://cdn.sanity.io/images/obr3wr6r/production/41e869078931e1d96c6288038b8628a97c463e5f-1920x1080.png",
+            "github": "https://github.com/NaviTheCoderboi",
+            "url": "https://github.com/NaviTheCoderboi",
+            "tags": ["python", "aiohttp", "NaviTheCoderboi"]
+        },
+        {
+            "title": "NewsDash",
+            "description": "NewsDash is a fast and reliable Python wrapper for the News API that simplifies accessing the latest news articles from around the world.",
+            "cover": "https://cdn.sanity.io/images/obr3wr6r/production/41e869078931e1d96c6288038b8628a97c463e5f-1920x1080.png",
+            "github": "https://github.com/NaviTheCoderboi",
+            "url": "https://github.com/NaviTheCoderboi",
+            "tags": ["python", "aiohttp", "NaviTheCoderboi"]
+        },
+        {
+            "title": "NewsDash",
+            "description": "NewsDash is a fast and reliable Python wrapper for the News API that simplifies accessing the latest news articles from around the world.",
+            "cover": "https://cdn.sanity.io/images/obr3wr6r/production/41e869078931e1d96c6288038b8628a97c463e5f-1920x1080.png",
+            "github": "https://github.com/NaviTheCoderboi",
+            "url": "https://github.com/NaviTheCoderboi",
+            "tags": ["python", "aiohttp", "NaviTheCoderboi"]
+        },
+        {
+            "title": "NewsDash",
+            "description": "NewsDash is a fast and reliable Python wrapper for the News API that simplifies accessing the latest news articles from around the world.",
+            "cover": "https://cdn.sanity.io/images/obr3wr6r/production/41e869078931e1d96c6288038b8628a97c463e5f-1920x1080.png",
+            "github": "https://github.com/NaviTheCoderboi",
+            "url": "https://github.com/NaviTheCoderboi",
+            "tags": ["python", "aiohttp", "NaviTheCoderboi"]
+        }
+    ]
+}
