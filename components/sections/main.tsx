@@ -3,13 +3,22 @@ import React from "react";
 import { motion } from "framer-motion";
 import HomeCanvas from "$lib/canvas/homeCanvas";
 
+const MobileSection = () => {
+    return (
+        <div className="flex md:hidden">
+            <div></div>
+        </div>
+    );
+};
+
 const main = () => {
     return (
         <div id="home">
             <div className="absolute left-0 top-0 z-[-1] h-screen w-full">
                 <HomeCanvas />
             </div>
-            <section className="flex flex-col justify-center items-center h-screen">
+            <MobileSection />
+            <section className="hidden md:flex flex-col justify-center items-center h-screen">
                 <div className="flex items-center justify-center h-2/5 gap-5 rounded-2xl">
                     <div className="relative h-full flex flex-col items-center justify-center">
                         <div className="h-5 w-5 rounded-full bg-violet-500"></div>
@@ -27,11 +36,11 @@ const main = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <div className="text-[4.5rem] font-extrabold tracking-tight">
+                            <div className="text-[2rem] md:text-[5rem] font-extrabold tracking-tight">
                                 Hi, I'm
                             </div>
                             <div
-                                className="text-[4.5rem] font-extrabold tracking-tight text-blue-500"
+                                className="text-[2rem] md:text-[5rem] font-extrabold tracking-tight text-blue-500"
                                 id="mainText"
                             >
                                 Navinder

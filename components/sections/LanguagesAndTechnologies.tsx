@@ -29,9 +29,9 @@ const languagesAndTechnologies = () => {
                 className="flex flex-col gap-2"
             >
                 <div className="text-xl font-light tracking-tight text-center uppercase">
-                    My knowledge of languages and technologies
+                    my experience of
                 </div>
-                <div className="text-3xl font-bold tracking-tight text-center">
+                <div className="text-[4rem] font-bold tracking-tight text-center">
                     Languages and Technologies
                 </div>
             </motion.div>
