@@ -30,4 +30,16 @@ const Icons = {
     ubuntu,
 };
 
-export { Logo, Normal, Star, Icons };
+import backend from "./assets/backend.webp";
+import frontend from "./assets/frontend.webp";
+import designer from "./assets/designer.webp";
+import biology from "./assets/biology.webp";
+
+const Skills = {
+    backend,
+    frontend,
+    designer,
+    biology,
+};
+
+export { Logo, Normal, Star, Icons, Skills };
