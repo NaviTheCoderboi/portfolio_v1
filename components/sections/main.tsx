@@ -5,8 +5,20 @@ import HomeCanvas from "$lib/canvas/homeCanvas";
 
 const MobileSection = () => {
     return (
-        <div className="flex md:hidden">
-            <div></div>
+        <div className="flex md:hidden flex-col justify-center items-center h-screen w-full">
+            <div className="flex flex-col items-center justify-center gap-5">
+                <div className="flex items-center gap-3">
+                    <div className="text-2xl font-bold tracking-tight">
+                        Hi, I'm
+                    </div>
+                    <div
+                        className="text-2xl font-bold tracking-tight"
+                        id="mainText"
+                    >
+                        Navinder Singh
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
