@@ -122,41 +122,44 @@ const SkillsSection = () => {
 const ExperienceCard = ({
     experience,
 }: {
-    experience: any;
+    experience: { title: string; year: number; icon: any; description: string };
 }): React.JSX.Element => {
     return (
         <VerticalTimelineElement
             className="vertical-timeline-element--work"
             contentStyle={{
-                background:
-                    "linear-gradient(to bottom right, #2c0a4f, #1d1836)",
+                background: "rgb(30 41 59)",
                 color: "#fff",
             }}
-            contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-            date={experience.date}
-            iconStyle={{ background: experience.iconBg }}
+            contentArrowStyle={{ borderRight: "7px solid rgb(30 41 59)" }}
+            date={String(experience.year)}
+            iconStyle={{ background: "rgb(226 232 240)" }}
             icon={
-                <div className="flex h-full w-full items-center justify-center p-1">
+                <div className="flex h-full w-full items-center justify-center">
                     <Image
-                        width={64}
-                        height={64}
                         src={experience.icon}
-                        alt={experience.year}
+                        alt={experience.title}
                         className="h-full w-full object-contain"
                     />
                 </div>
             }
         >
-            <div>
-                <h3 className="vertical-timeline-element-title text-white text-[24px] font-bold">
+            <div className="flex flex-col gap-5">
+                <h3 className="text-white text-2xl font-bold">
                     {experience.title}
                 </h3>
-                <p
-                    className="vertical-timeline-element-subtitle text-[16px] font-semibold text-neutral-300"
+                <div
+                    className="text-xl font-semibold text-neutral-300"
                     style={{ margin: 0 }}
                 >
                     {experience.year}
-                </p>
+                </div>
+                <div
+                    className="text-lg font-medium text-slate-200"
+                    style={{ margin: 0 }}
+                >
+                    {experience.description}
+                </div>
             </div>
         </VerticalTimelineElement>
     );
