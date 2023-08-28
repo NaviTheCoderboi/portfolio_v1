@@ -91,38 +91,38 @@ export const Experiences: ExperiencesType[] = [
             "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
     },
     {
-        title: "Python Developer",
+        title: "Html and css",
         year: 2021,
-        icon: Icons.python,
+        icon: Icons.html,
         description:
-            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+            "When i completed my python learning, i came to know about bootstrap which attracted mne to web development and i thought of learning it. I again preferred CodeWithHarry and learnt html and css from there. I made many projects with html and css but i wasn't knowing javascript yet.",
     },
     {
-        title: "Python Developer",
+        title: "Backend Developer",
         year: 2021,
-        icon: Icons.python,
+        icon: Icons.javascript,
         description:
-            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+            "After learning Html and Css , i went on to learn javascript and made many projects usin git and thought of learning its closest thing: Nodejs and made projects using it and also learnt dbs such as mongodb and postgres along with it.",
     },
     {
-        title: "Python Developer",
+        title: "Frontend frameworks",
         year: 2021,
-        icon: Icons.python,
+        icon: Icons.react,
         description:
-            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+            "Then came the frontend framework: React into my vision and i went to learn it. After learning its core concepts i learnt NextJs. I also learnt tailwindcss and made many projects with it.",
     },
     {
-        title: "Python Developer",
+        title: "Typescript",
         year: 2021,
-        icon: Icons.python,
+        icon: Icons.typescript,
         description:
-            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+            "I was going well with javascript was missing a taste of type annotations , so i came to know about typescript and learnt it. I got sticked to it and made many projects such as ExpressApi and used it in my frontend projects",
     },
     {
-        title: "Python Developer",
+        title: "Rust",
         year: 2021,
-        icon: Icons.python,
+        icon: Icons.rust,
         description:
-            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+            "I listened about a lot of pros of rust and its speed, so i wen tto learn rust and i am still learning it.",
     },
 ];

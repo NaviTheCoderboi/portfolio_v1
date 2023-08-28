@@ -14,6 +14,7 @@ import python from "./icons/python.svg";
 import react from "./icons/react.svg";
 import typescript from "./icons/typescript.svg";
 import ubuntu from "./icons/ubuntu.svg";
+import rust from "./icons/rust.png";
 
 const Icons = {
     css,
@@ -28,6 +29,7 @@ const Icons = {
     react,
     typescript,
     ubuntu,
+    rust,
 };
 
 import backend from "./assets/backend.webp";
