@@ -2,9 +2,15 @@
 import React from "react";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import LanguagesAndTechnologies from "$component@sections/LanguagesAndTechnologies";
 import { Skills } from "$public";
 import Image from "next/image";
+import { Experiences } from "$lib/constants/constants";
+import {
+    VerticalTimeline,
+    VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
+import LanguagesAndTechnologies from "$component@sections/LanguagesAndTechnologies";
 
 const SkillsSection = () => {
     const borderColors =
@@ -24,7 +30,7 @@ const SkillsSection = () => {
                         className="h-1/2 w-full rounded-t-2xl"
                     />
                     <div className="h-1/2 w-full flex flex-col justify-center items-center gap-4 px-6 ">
-                        <div className="text-[1.3rem] font-medium">
+                        <div className="text-[1.2rem] font-medium">
                             Designer
                         </div>
                         <div className="text-[0.8rem] font-normal text-slate-300">
@@ -48,6 +54,17 @@ const SkillsSection = () => {
                         alt="designer"
                         className="h-1/2 w-full rounded-t-2xl"
                     />
+                    <div className="h-1/2 w-full flex flex-col justify-center items-center gap-4 px-6 ">
+                        <div className="text-[1.2rem] font-medium">
+                            Backend developer
+                        </div>
+                        <div className="text-[0.8rem] font-normal text-slate-300">
+                            {" "}
+                            With a blend of design finesse and frontend-backend
+                            prowess, I create holistic digital solutions that
+                            bridge art and technology.
+                        </div>
+                    </div>
                 </Tilt>
             </motion.div>
             <motion.div
@@ -62,6 +79,15 @@ const SkillsSection = () => {
                         alt="designer"
                         className="h-1/2 w-full rounded-t-2xl"
                     />
+                    <div className="h-1/2 w-full flex flex-col justify-center items-center gap-4 px-6 ">
+                        <div className="text-[1.2rem] font-medium">Biology</div>
+                        <div className="text-[0.8rem] font-normal text-slate-300">
+                            {" "}
+                            My passion for biology drives me to translate
+                            scientific fascination into captivating web
+                            creations that both educate and inspire.
+                        </div>
+                    </div>
                 </Tilt>
             </motion.div>
             <motion.div
@@ -76,9 +102,63 @@ const SkillsSection = () => {
                         alt="designer"
                         className="h-1/2 w-full rounded-t-2xl"
                     />
+                    <div className="h-1/2 w-full flex flex-col justify-center items-center gap-4 px-6 ">
+                        <div className="text-[1.2rem] font-medium">
+                            Frontend developer
+                        </div>
+                        <div className="text-[0.8rem] font-normal text-slate-300">
+                            {" "}
+                            I build frontend experiences that deeply resonate
+                            with users and create backend systems that power
+                            seamless interactions.
+                        </div>
+                    </div>
                 </Tilt>
             </motion.div>
         </div>
+    );
+};
+
+const ExperienceCard = ({
+    experience,
+}: {
+    experience: any;
+}): React.JSX.Element => {
+    return (
+        <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            contentStyle={{
+                background:
+                    "linear-gradient(to bottom right, #2c0a4f, #1d1836)",
+                color: "#fff",
+            }}
+            contentArrowStyle={{ borderRight: "7px solid  #232631" }}
+            date={experience.date}
+            iconStyle={{ background: experience.iconBg }}
+            icon={
+                <div className="flex h-full w-full items-center justify-center p-1">
+                    <Image
+                        width={64}
+                        height={64}
+                        src={experience.icon}
+                        alt={experience.year}
+                        className="h-full w-full object-contain"
+                    />
+                </div>
+            }
+        >
+            <div>
+                <h3 className="vertical-timeline-element-title text-white text-[24px] font-bold">
+                    {experience.title}
+                </h3>
+                <p
+                    className="vertical-timeline-element-subtitle text-[16px] font-semibold text-neutral-300"
+                    style={{ margin: 0 }}
+                >
+                    {experience.year}
+                </p>
+            </div>
+        </VerticalTimelineElement>
     );
 };
 
@@ -119,6 +199,32 @@ const about = () => {
                         Some of my skills are listed below {"->"}
                     </motion.div>
                     <SkillsSection />
+                </div>
+                <div className="h-full w-full flex flex-col gap-5">
+                    <motion.div
+                        initial={{ x: -30, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                        className="flex flex-col gap-2 items-center justify-center"
+                    >
+                        <div className="text-lg font-light tracking-tight uppercase">
+                            What I have learnt so far
+                        </div>
+                        <div className="text-section-title-mobile md:text-section-title-md font-bold tracking-tight">
+                            Experience
+                        </div>
+                    </motion.div>
+                    <VerticalTimeline>
+                        {Experiences.map((experience, index) => {
+                            return (
+                                <ExperienceCard
+                                    key={`experience-${index}`}
+                                    experience={experience}
+                                />
+                            );
+                        })}
+                    </VerticalTimeline>
                 </div>
                 {/* <LanguagesAndTechnologies /> */}
             </div>

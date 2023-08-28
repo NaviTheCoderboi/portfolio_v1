@@ -74,3 +74,55 @@ export const LanguagesAndTechnologies: LanguagesAndTechnologiesType[] = [
     { image: Icons.typescript, name: "Typescript", delay: 1.2 },
     { image: Icons.ubuntu, name: "Ubuntu", delay: 1.3 },
 ];
+
+interface ExperiencesType {
+    title: string;
+    year: number;
+    icon: any;
+    description: string;
+}
+
+export const Experiences: ExperiencesType[] = [
+    {
+        title: "Python Developer",
+        year: 2021,
+        icon: Icons.python,
+        description:
+            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+    },
+    {
+        title: "Python Developer",
+        year: 2021,
+        icon: Icons.python,
+        description:
+            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+    },
+    {
+        title: "Python Developer",
+        year: 2021,
+        icon: Icons.python,
+        description:
+            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+    },
+    {
+        title: "Python Developer",
+        year: 2021,
+        icon: Icons.python,
+        description:
+            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+    },
+    {
+        title: "Python Developer",
+        year: 2021,
+        icon: Icons.python,
+        description:
+            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+    },
+    {
+        title: "Python Developer",
+        year: 2021,
+        icon: Icons.python,
+        description:
+            "I started my coding journey with python when i was in 8th grade and I still love it. I have made many projects with python and I am still learning it. I started learning it from YouTube channel named CodeWithHarry and i got interested in coding.",
+    },
+];
