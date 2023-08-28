@@ -16,7 +16,7 @@ const SkillsSection = () => {
     const borderColors =
         " rounded-2xl border-2 border-t-blue-500 border-l-blue-400 border-b-violet-500 border-r-violet-400 hover:border-t-blue-400 hover:border-l-violet-500 hover:border-b-violet-400 hover:border-r-blue-500 duration-1000";
     return (
-        <div className="p-3 w-full grid grid-flow-row grid-cols-4 grid-rows-1 gap-10">
+        <div className="p-3 w-full grid grid-flow-col grid-cols-1 grid-rows-4 md:grid-flow-row sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-4 md:grid-rows-1 gap-10">
             <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -122,7 +122,7 @@ const SkillsSection = () => {
 const ExperienceCard = ({
     experience,
 }: {
-    experience: { title: string; year: number; icon: any; description: string };
+    experience: { title: string; year: string; icon: any; description: string };
 }): React.JSX.Element => {
     return (
         <VerticalTimelineElement
@@ -132,7 +132,7 @@ const ExperienceCard = ({
                 color: "#fff",
             }}
             contentArrowStyle={{ borderRight: "7px solid rgb(30 41 59)" }}
-            date={String(experience.year)}
+            date={experience.year}
             iconStyle={{ background: "rgb(226 232 240)" }}
             icon={
                 <div className="flex h-full w-full items-center justify-center">
@@ -205,8 +205,8 @@ const about = () => {
                 </div>
                 <div className="h-full w-full flex flex-col gap-5">
                     <motion.div
-                        initial={{ x: -30, opacity: 0 }}
-                        whileInView={{ x: 0, opacity: 1 }}
+                        initial={{ y: 30, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
                         className="flex flex-col gap-2 items-center justify-center"
@@ -229,7 +229,7 @@ const about = () => {
                         })}
                     </VerticalTimeline>
                 </div>
-                {/* <LanguagesAndTechnologies /> */}
+                <LanguagesAndTechnologies />
             </div>
         </section>
     );

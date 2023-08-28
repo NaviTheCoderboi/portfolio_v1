@@ -19,3 +19,10 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
+
+.green-pink-gradient {
+    background: #45e8b8;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+    background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+}
