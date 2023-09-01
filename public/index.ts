@@ -44,4 +44,12 @@ const Skills = {
     biology,
 };
 
-export { Logo, Normal, Star, Icons, Skills };
+import NewsDash from "./projectsPosters/NewsDash.jpg";
+import Portfolio from "./projectsPosters/portfolio.jpg";
+import ByteChat from "./projectsPosters/bytechat.jpg";
+
+const ProjectPosters = { NewsDash, Portfolio, ByteChat };
+
+import notFound from "./assets/not-found.webp";
+
+export { Logo, Normal, Star, Icons, Skills, ProjectPosters, notFound };

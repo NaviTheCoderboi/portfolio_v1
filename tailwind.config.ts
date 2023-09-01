@@ -10,13 +10,13 @@ const config: Config = {
     theme: {
         extend: {
             fontSize: {
-                "title-mobile": "2.2rem",
+                "title-mobile": "1.8rem",
                 "title-md": "5rem",
                 "section-title-md": "4rem",
                 "section-title-mobile": "2rem",
             },
         },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/typography")],
 };
 export default config;

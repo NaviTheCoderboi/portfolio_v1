@@ -1,5 +1,5 @@
 import React from "react";
-import { LanguagesAndTechnologies } from "$lib/constants/constants";
+import { LanguagesAndTechnologies } from "$lib@constants/constants";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Tilt from "react-parallax-tilt";
@@ -12,13 +12,13 @@ const LanguageAndTechnology = ({
     return (
         <Tilt className="flex justify-center items-center p-4 rounded-full border-blue-500 border-2 cursor-pointer hover:bg-gradient-to-bl from-slate-700 via-transparent to-violet-950">
             <div className="hidden md:block">
-                <Image src={LAT.image} width={90} height={90} alt={LAT.name} />
+                <Image src={LAT.image} width={80} height={80} alt={LAT.name} />
             </div>
             <div className="md:hidden">
                 <Image
                     src={LAT.image}
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     alt={LAT.name}
                     loading="lazy"
                 />

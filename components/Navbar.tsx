@@ -2,17 +2,29 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Logo } from "$public";
-import { NavItems } from "$lib/constants/constants";
+import { NavItems } from "$lib@constants/constants";
 import Link from "next/link";
 import { FaHamburger } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
+import { useRouter, usePathname } from "next/navigation";
 
 const Navbar = () => {
+    const router = useRouter();
+    const pathname = usePathname();
     const handleScroll = (
         event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
     ) => {
         event.preventDefault();
+        if (event.currentTarget.href.replace(/.*\#/, "") == "blog") {
+            router.push("/blog");
+        } else {
+            if (pathname == "/blog") {
+                router.push(
+                    "/#" + event.currentTarget.href.replace(/.*\#/, "")
+                );
+            }
+        }
         let href = event.currentTarget.href;
         let targetId = href.replace(/.*\#/, "");
         const element = document.getElementById(targetId);

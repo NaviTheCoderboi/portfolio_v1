@@ -22,7 +22,12 @@
 
 .green-pink-gradient {
     background: #45e8b8;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
     background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+}
+
+.purple-pink-gradient {
+    background: #45e8b8;
+    background: -webkit-linear-gradient(-90.13deg, #bf61ff 1.9%, #ff6bcb 97.5%);
+    background: linear-gradient(90.13deg, #bf61ff 1.9%, #ff6bcb 97.5%);
 }

@@ -1,6 +1,6 @@
 import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
 import { BsDiscord } from "react-icons/bs";
-import { Icons, Skills } from "$public";
+import { Icons, ProjectPosters } from "$public";
 
 interface NavItemsType {
     name: string;
@@ -138,27 +138,30 @@ interface ProjectsType {
 
 export const Projects: ProjectsType[] = [
     {
-        title: "ExpressApi",
-        description: "A simple express api with mongodb as database",
-        image: Skills.backend,
-        link: "https://github.com",
+        title: "NewsDash",
+        description:
+            "NewsDash is a fast and reliable Python wrapper for the News API that simplifies accessing the latest news articles from around the world. 📰",
+        image: ProjectPosters.NewsDash,
+        link: "https://navithecoderboi.github.io/NewsDash/",
         delay: 0.2,
-        github: "https://github.com",
+        github: "https://github.com/NaviTheCoderboi/NewsDash",
     },
     {
-        title: "ExpressApi",
-        description: "A simple express api with mongodb as database",
-        image: Skills.backend,
-        link: "https://github.com",
+        title: "Portfolio site",
+        description:
+            "My portfolio site made using NextJS with TailwindCSS, ThreeJS and typescript. Don't forget to check it out.",
+        image: ProjectPosters.Portfolio,
+        link: "https://navithecoderboi.vercel.app/",
         delay: 0.4,
-        github: "https://github.com",
+        github: "https://github.com/NaviTheCoderboi/portfolio",
     },
     {
-        title: "ExpressApi",
-        description: "A simple express api with mongodb as database",
-        image: Skills.backend,
-        link: "https://github.com",
+        title: "ByteChat",
+        description:
+            "ByteChat is a mixup of discord and stackoverflow where developers meet and chat, ask questions and answer them.",
+        image: ProjectPosters.ByteChat,
+        link: "https://github.com/Devaunch/ByteChat",
         delay: 0.6,
-        github: "https://github.com",
+        github: "https://github.com/Devaunch/ByteChat",
     },
 ];

@@ -4,7 +4,7 @@ import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import { Skills } from "$public";
 import Image from "next/image";
-import { Experiences } from "$lib/constants/constants";
+import { Experiences } from "$lib@constants/constants";
 import {
     VerticalTimeline,
     VerticalTimelineElement,
@@ -16,7 +16,7 @@ const SkillsSection = () => {
     const borderColors =
         " rounded-2xl border-2 border-t-blue-500 border-l-blue-400 border-b-violet-500 border-r-violet-400 hover:border-t-blue-400 hover:border-l-violet-500 hover:border-b-violet-400 hover:border-r-blue-500 duration-1000";
     return (
-        <div className="p-3 w-full grid grid-flow-col grid-cols-1 grid-rows-4 md:grid-flow-row sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-4 md:grid-rows-1 gap-10">
+        <div className="p-3 w-full grid grid-flow-col grid-cols-1 grid-rows-4 lg:grid-flow-row  md:grid-flow-row md:grid-cols-2 md:grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-10">
             <motion.div
                 initial={{ x: -50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -56,7 +56,7 @@ const SkillsSection = () => {
                     />
                     <div className="h-1/2 w-full flex flex-col justify-center items-center gap-4 px-6 ">
                         <div className="text-[1.2rem] font-medium">
-                            Backend developer
+                            Backend dev
                         </div>
                         <div className="text-[0.8rem] font-normal text-slate-300">
                             {" "}
@@ -104,7 +104,7 @@ const SkillsSection = () => {
                     />
                     <div className="h-1/2 w-full flex flex-col justify-center items-center gap-4 px-6 ">
                         <div className="text-[1.2rem] font-medium">
-                            Frontend developer
+                            Frontend dev
                         </div>
                         <div className="text-[0.8rem] font-normal text-slate-300">
                             {" "}

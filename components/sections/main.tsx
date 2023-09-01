@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import HomeCanvas from "$lib/canvas/homeCanvas";
+import HomeCanvas from "$lib@canvas/homeCanvas";
 
 const MobileSection = () => {
     return (
@@ -16,9 +16,9 @@ const MobileSection = () => {
                         transition={{ duration: 1 }}
                     ></motion.div>
                 </div>
-                <div className="flex flex-col gap-5 h-auto justify-start">
+                <div className="flex flex-col gap-5 h-full justify-start pt-8">
                     <motion.div
-                        className="flex items-center gap-3 h-full"
+                        className="flex items-center gap-3"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
