@@ -44,7 +44,7 @@ const BlogCard = ({ blog }: { blog: any }) => {
                             <div className="text-slate-400/70" key={idx}>
                                 {tag}
                             </div>
-                        )
+                        ),
                     )}
                 </div>
             </div>
@@ -75,14 +75,14 @@ const BlogCard = ({ blog }: { blog: any }) => {
     );
 };
 
-const page = ({ blogs }: { blogs: any }) => {
+const Page = ({ blogs }: { blogs: any }) => {
     const [search, setSearch] = React.useState("");
     const [filteredBlogs, setFilteredBlogs] = React.useState(blogs);
     const filter = (search: string) => {
         setFilteredBlogs(
             blogs.filter((blog: any) =>
-                blog.frontmatter.title.toLowerCase().includes(search)
-            )
+                blog.frontmatter.title.toLowerCase().includes(search),
+            ),
         );
     };
 
@@ -114,7 +114,7 @@ const page = ({ blogs }: { blogs: any }) => {
                     {filteredBlogs.map(
                         (blog: any, idx: React.Key | null | undefined) => (
                             <BlogCard blog={blog} key={idx} />
-                        )
+                        ),
                     )}
                 </div>
             ) : (
@@ -135,4 +135,4 @@ const page = ({ blogs }: { blogs: any }) => {
     );
 };
 
-export default page;
+export default Page;

@@ -8,6 +8,20 @@ import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { SlCalender } from "react-icons/sl";
 import { format, parseISO } from "date-fns";
+import Highlight from "react-syntax-highlighter";
+import oneDark from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-dark";
+
+const components = {
+    pre: (props: any) => <div {...props} />,
+    code: ({ children, className }: any) => {
+        const language = className.replace(/language-/, "");
+        return (
+            <Highlight style={oneDark} language={language}>
+                {children}
+            </Highlight>
+        );
+    },
+};
 
 const Blog = ({
     blog,
@@ -28,24 +42,39 @@ const Blog = ({
         let random = Math.floor(Math.random() * colors.length);
         return colors[random];
     };
+
+    const handleScrollToHeading = (
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    ) => {
+        event.preventDefault();
+        let href = event.currentTarget.href;
+        let targetId = href.replace(/.*\#/, "");
+        const element = document.getElementById(targetId);
+        element?.scrollIntoView({ behavior: "smooth" });
+    };
     return (
         <div className="min-h-screen w-full">
-            <div className="w-[65%] h-full mx-auto mt-44 px-2 grid grid-cols-1 sm:gap-12 lg:grid-cols-12">
-                <div className="flex flex-col gap-12 col-span-1 lg:col-span-8">
+            <div className="w-4/5 md:w-[65%] h-full mx-auto mt-44 px-2 grid grid-cols-1 gap-20 sm:gap-12 lg:grid-cols-12 grid-flow-row lg:grid-flow-col">
+                <div
+                    className="flex flex-col gap-12 col-span-1 lg:col-span-8
+                order-2 lg:order-1 py-10"
+                >
                     <Image
                         src={blog.frontmatter.cover_image as StaticImport}
                         alt={blog.frontmatter.title as string}
-                        className="w-full h-[30rem] rounded-xl"
+                        className="h-full w-full rounded-xl object-cover object-top "
+                        height={100}
+                        width={100}
                     />
                     <div className="text-3xl font-bold text-center w-full py-3">
                         {blog.frontmatter.title as string}
                     </div>
-                    <article className="w-full h-auto prose-sm md:prose prose-zinc">
-                        <MDXRemote {...blog} />
+                    <article className="w-full h-auto prose prose-invert prose-p:text-lg font-normal text-slate-300">
+                        <MDXRemote {...blog} components={components} />
                     </article>
                 </div>
-                <div className="col-span-1 lg:col-span-4">
-                    <div className="relative lg:sticky top-44">
+                <div className="col-span-1 lg:col-span-4 order-1 lg:order-2">
+                    <div className="relative lg:sticky lg:top-44">
                         <div className="w-full h-auto flex flex-col gap-5">
                             <div className="text-2xl font-semibold">
                                 Table Of Contents
@@ -59,9 +88,13 @@ const Blog = ({
                                                 title: string;
                                                 level: number;
                                             },
-                                            idx: React.Key | undefined
+                                            idx: React.Key | undefined,
                                         ) => (
-                                            <div
+                                            <a
+                                                href={`#${heading.title
+                                                    .toLowerCase()
+                                                    .replace(/\s/g, "-")}`}
+                                                onClick={handleScrollToHeading}
                                                 key={idx}
                                                 className={`flex justify-start items-center gap-3 text-xl font-normal text-blue-400 hover:underline hover:text-blue-300 cursor-pointer duration-150
                                                     ${
@@ -81,8 +114,8 @@ const Blog = ({
                                                     <GiPlainCircle className="text-sm text-white" />
                                                 )}
                                                 {heading.title}
-                                            </div>
-                                        )
+                                            </a>
+                                        ),
                                     )
                                 }
                             </div>
@@ -109,15 +142,16 @@ const Blog = ({
                                 <div className="text-xl text-white font-normal">
                                     {format(
                                         parseISO(
-                                            blog.frontmatter.posted_at as any
+                                            blog.frontmatter.posted_at as any,
                                         ),
-                                        "LLLL d, yyyy"
+                                        "LLLL d, yyyy",
                                     )}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div className="sticky sm:hidd"></div>
             </div>
         </div>
     );

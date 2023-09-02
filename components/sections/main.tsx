@@ -24,7 +24,7 @@ const MobileSection = () => {
                         transition={{ duration: 0.5 }}
                     >
                         <div className="text-title-mobile font-bold tracking-tight">
-                            Hi, I'm
+                            Hi, I&apos;m
                         </div>
                         <div
                             className="text-title-mobile font-bold tracking-tight"
@@ -39,8 +39,8 @@ const MobileSection = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        I'm a high school student from India dreaming to be a
-                        doctor.
+                        I&apos;m a high school student from India dreaming to be
+                        a doctor.
                     </motion.div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ const main = () => {
                             transition={{ duration: 0.5 }}
                         >
                             <div className="text-title-md font-extrabold tracking-tight">
-                                Hi, I'm
+                                Hi, I&apos;m
                             </div>
                             <div
                                 className="text-title-md font-extrabold tracking-tight text-blue-500"
@@ -89,8 +89,8 @@ const main = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            I'm a high school student from India dreaming to be
-                            a doctor.
+                            I&apos;m a high school student from India dreaming
+                            to be a doctor.
                         </motion.div>
                     </div>
                 </div>

@@ -95,14 +95,14 @@ export const Experiences: ExperiencesType[] = [
         year: "2022 - January",
         icon: Icons.html,
         description:
-            "When i completed my python learning, i came to know about bootstrap which attracted mne to web development and i thought of learning it. I again preferred CodeWithHarry and learnt html and css from there. I made many projects with html and css but i wasn't knowing javascript yet.",
+            "When i completed my python learning, i came to know about bootstrap which attracted me to web development and i thought of learning it. I again preferred CodeWithHarry and learnt html and css from there. I made many projects with html and css but i wasn't knowing javascript yet.",
     },
     {
         title: "Backend Developer",
         year: "2022 - April",
         icon: Icons.javascript,
         description:
-            "After learning Html and Css , i went on to learn javascript and made many projects usin git and thought of learning its closest thing: Nodejs and made projects using it and also learnt dbs such as mongodb and postgres along with it.",
+            "After learning Html and Css , i went on to learn javascript and made many projects using it and thought of learning its closest thing: Nodejs and made projects using it and also learnt dbs such as mongodb and postgres along with it.",
     },
     {
         title: "Frontend frameworks",

@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import covers from "$content/assets";
+import remarkGFM from "remark-gfm";
 
 export const getBlogs = async () => {
     let blog_files = await fs.readdir("content/blogs");
@@ -9,14 +10,14 @@ export const getBlogs = async () => {
         blog_files.map(async (blog_file) => {
             let content = await fs.readFile(
                 `content/blogs/${blog_file}`,
-                "utf-8"
+                "utf-8",
             );
             let parsed = await serialize(content, {
                 parseFrontmatter: true,
             });
             parsed.frontmatter.slug = blog_file.replace(".mdx", "");
             return parsed;
-        })
+        }),
     );
     return blogs;
 };
@@ -38,6 +39,7 @@ export const getBlog = async (slug: string) => {
         parseFrontmatter: true,
         mdxOptions: {
             rehypePlugins: [rehypeSlug],
+            remarkPlugins: [remarkGFM],
         },
     });
     // @ts-ignore

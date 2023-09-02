@@ -83,7 +83,7 @@ const projects = () => {
                         Following are some of the projects I have worked on.
                         They show my skills and my abilities . I have worked on
                         a lot of projects but these are the ones I am most proud
-                        of. Don't forget to check them out!{"    "}
+                        of. Don&apos;t forget to check them out!{"    "}
                         <a
                             className="inline-flex justify-center items-center text-blue-500 text-xl font-bold"
                             href="https://github.com/NaviTheCoderboi?tab=repositories"

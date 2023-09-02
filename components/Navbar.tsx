@@ -13,15 +13,16 @@ const Navbar = () => {
     const router = useRouter();
     const pathname = usePathname();
     const handleScroll = (
-        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     ) => {
         event.preventDefault();
+        console.log(pathname);
         if (event.currentTarget.href.replace(/.*\#/, "") == "blog") {
             router.push("/blog");
         } else {
-            if (pathname == "/blog") {
+            if (pathname.includes("/blog")) {
                 router.push(
-                    "/#" + event.currentTarget.href.replace(/.*\#/, "")
+                    "/#" + event.currentTarget.href.replace(/.*\#/, ""),
                 );
             }
         }
@@ -33,7 +34,7 @@ const Navbar = () => {
 
     const [open, setOpen] = useState(false);
     const handleCloseAndHref = (
-        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     ) => {
         setOpen(false);
         handleScroll(event);
