@@ -13,7 +13,6 @@ export const metadata: Metadata = {
     description:
         "Hello! I'm NaviTheCoderboi, a developer from India. Welcome to my portfolio! you can read about me here and my blogs too.",
     metadataBase: new URL(String(process.env.BASE_URL)),
-    referrer: "origin-when-cross-origin",
     authors: [{ name: "NaviTheCoderboi" }],
     keywords: [
         "NaviTheCoderboi",
