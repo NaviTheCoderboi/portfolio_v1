@@ -25,11 +25,15 @@ export const getBlogs = async () => {
 export const getBlog = async (slug: string) => {
     let content = await fs.readFile(`content/blogs/${slug}.mdx`, "utf-8");
 
+    let headingsContent = content;
+    const codeBlockRegex = /```[\s\S]*?```/g;
+    headingsContent = headingsContent.replace(codeBlockRegex, "");
+
     const regex = /^(#+)\s+(.+)/gm;
     const headings = [];
     let match;
 
-    while ((match = regex.exec(content)) !== null) {
+    while ((match = regex.exec(headingsContent)) !== null) {
         const level = match[1].length; // Calculate the heading level based on the number of '#'
         const title = match[2].trim(); // Trim any leading/trailing whitespace
         headings.push({ level, title });

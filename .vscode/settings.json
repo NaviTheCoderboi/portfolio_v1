@@ -1,5 +1,4 @@
 {
     "editor.tabSize": 4,
-    "typescript.tsdk": "node_modules\\typescript\\lib",
-    "eslint.validate": ["markdown", "mdx"]
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

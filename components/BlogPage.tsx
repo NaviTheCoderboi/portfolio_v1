@@ -50,7 +50,7 @@ const BlogCard = ({ blog }: { blog: any }) => {
             </div>
             <div className="hidden md:block w-1/4 p-2">
                 <motion.div
-                    className="w-full"
+                    className="w-full h-full rounded-r-xl object-cover object-right"
                     initial={{ x: -30, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
@@ -65,9 +65,9 @@ const BlogCard = ({ blog }: { blog: any }) => {
                                     "polygon(0 0, 100% 0, 100% 100%, 20% 100%)",
                             } as React.CSSProperties
                         }
-                        className="rounded-r-2xl"
-                        width={200}
-                        height={100}
+                        className="w-full h-full rounded-r-xl object-cover object-right"
+                        loading="lazy"
+                        quality={100}
                     />
                 </motion.div>
             </div>

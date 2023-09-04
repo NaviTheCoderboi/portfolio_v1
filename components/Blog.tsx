@@ -10,6 +10,7 @@ import { SlCalender } from "react-icons/sl";
 import { format, parseISO } from "date-fns";
 import Highlight from "react-syntax-highlighter";
 import oneDark from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-dark";
+import Note from "$content/components/note";
 
 const components = {
     pre: (props: any) => <div {...props} />,
@@ -21,6 +22,7 @@ const components = {
             </Highlight>
         );
     },
+    Note: Note,
 };
 
 const Blog = ({
@@ -63,8 +65,8 @@ const Blog = ({
                         src={blog.frontmatter.cover_image as StaticImport}
                         alt={blog.frontmatter.title as string}
                         className="h-full w-full rounded-xl object-cover object-top "
-                        height={100}
-                        width={100}
+                        loading="lazy"
+                        quality={100}
                     />
                     <div className="text-3xl font-bold text-center w-full py-3">
                         {blog.frontmatter.title as string}

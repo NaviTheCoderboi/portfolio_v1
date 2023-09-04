@@ -1,0 +1,409 @@
+---
+title: "Making a blog site using NextJS in 2023"
+description: "In this blog, we are going to build a blog site using NextJS and TailwindCSS. We will also be using MDX to write our blog posts."
+posted_at: "2023-09-04"
+read: "15 mins read"
+tags:
+    - Blog
+    - NextJS
+    - Tutorial
+img_path: "making-a-blog-site-using-NextJS-in-2023"
+---
+
+In this blog, we are going to build a blog site using NextJS and TailwindCSS. We will also be using MDX to write our blog posts. There are many frontend frameworks out there, but I chose NextJS because it is a React framework that is easy to use and has a lot of features. It also has a lot of community support and is very popular among developers. Let's get started
+
+# Prerequisites
+
+You can choose to either install Next.js on your local machine or use an online platform such as StackBlitz to speed up the process. When using online tools, make sure that they provide a Next.js 13 application rather than an older version.
+
+I am using **create-next-app** for this app.
+
+run the following command if you are using pnpm
+i recommend using typescript in your project
+
+```sh
+pnpm create next-app@latest .
+```
+
+or if you are using npm
+
+```sh
+npx create-next-app@latest .
+```
+
+# What is NextJS?
+
+Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
+
+Under the hood, Next.js also abstracts and automatically configures tooling needed for React, like bundling, compiling, and more. This allows you to focus on building your application instead of spending time with configuration.
+
+Its main feature is server-side rendering (SSR), which means that the initial HTML is generated on the server instead of the client. This allows for faster page loads and better SEO.
+
+# making the blog
+
+let's setup some useful things before we start building our blog site.
+
+## Setting up TailwindCSS
+
+TailwindCSS is a utility-first CSS framework that allows you to build responsive websites quickly. It provides a set of utility classes that you can use to style your website. It also has a built-in dark mode feature that you can use to switch between light and dark mode.
+
+run the following according to your package manager
+
+```sh
+pnpm add tailwindcss@latest postcss@latest autoprefixer@latest
+```
+
+Then run the following command to create a tailwind.config.js file
+
+```sh
+pnpm tailwindcss init -p
+```
+
+Add the following code to your **tailwind.config.ts** file
+
+```ts
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [
+        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+        // Or if using `src` directory:
+        "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+};
+```
+
+## install the required modules
+
+<table>
+    <tr>
+        <th>Module</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>next-mdx-remote</td>
+        <td>A library for rendering MDX content in Next.js</td>
+    </tr>
+    <tr>
+        <td>remark-gfm</td>
+        <td>A unified plugin for parsing GFM in Markdown</td>
+    </tr>
+    <tr>
+        <td>rehype-slug</td>
+        <td>A rehype plugin to add slugs to headings</td>
+    </tr>
+    <tr>
+        <td>react-syntax-highlighter</td>
+        <td>A library to provide code block syntac highlighting in mdx</td>
+    </tr>
+    <tr>
+        <td>date-fns</td>
+        <td>A library to provide utilities for date formatting</td>
+    </tr>
+</table>
+
+## cleanup default code
+
+You have to now remove the default code from the pages/index.tsx file and add the react component template and the css file
+
+## creating a homepage
+
+<Note information="We'll not focus much on designing in this tutorial, you can design it according to your needs" />
+
+Create a new folder called **content/blogs** in root directory and create a file called **[blog_name].mdx** in it. For now we will name it **hello-world.mdx**.
+
+```mdx
+---
+title: "Hello World"
+description: "This is my first blog post"
+posted_at: "2023-09-02"
+read: "15 mins read"
+tags:
+    - Blog
+    - NextJS
+    - Tutorial
+author: "John Doe"
+---
+
+# welcome to my blog
+
+this is my first blog post
+
+## random code
+
+[backtick _ 3 [language]]
+console.log("hello world")
+[backtick _ 3]
+```
+
+Next, create a utils folder in the root directory of your app , and create file **blogs.ts** , we'll use this file to get all the blogs from the **content/blogs** folder
+
+Add the following content in the file
+
+```ts
+import fs from "node:fs/promises";
+import { serialize } from "next-mdx-remote/serialize";
+
+export const getBlogs = async () => {
+    let blog_files = await fs.readdir("content/blogs");
+    let blogs = await Promise.all(
+        blog_files.map(async (blog_file) => {
+            let content = await fs.readFile(
+                `content/blogs/${blog_file}`,
+                "utf-8",
+            );
+            let parsed = await serialize(content, {
+                parseFrontmatter: true,
+            });
+            parsed.frontmatter.slug = blog_file.replace(".mdx", "");
+            return parsed;
+        }),
+    );
+    return blogs;
+};
+```
+
+This code will read all the files in the **content/blogs** folder and parse them using next-mdx-remote and return them as an array of objects
+
+Now, we'll create a component called BlogPage.tsx in the components folder, this component will be used to display the blog cards on the homepage
+
+```tsx
+"use client";
+import React from "react";
+import Link from "next/link";
+
+const BlogPage = ({ blogs }: { blogs: any }) => {
+    return (
+        <div className="flex flex-col gap-20 h-screen w-full">
+            <div className="w-full h-14 p-4 text-4xl font-bold text-center">
+                Blogs
+            </div>
+            <div className="flex flex-col gap-5 w-4/5 mx-auto">
+                {blogs.map((blog: any, idx: React.Key) => (
+                    <div
+                        className="flex flex-col gap-5 rounded-xl w-full h-auto p-6 bg-slate-800"
+                        key={idx}
+                    >
+                        <Link
+                            href={"/blog/" + blog.frontmatter.slug}
+                            className="text-white text-xl font-bold hover:text-slate-300 duration-500"
+                        >
+                            {blog.frontmatter.title}
+                        </Link>
+                        <div className="text-lg text-slate-200 font-normal">
+                            {blog.frontmatter.description}
+                        </div>
+                        <div className="flex gap-5 items-center justify-start">
+                            <div className="text-sm text-slate-300">
+                                {blog.frontmatter.read}
+                            </div>
+                            <div className="flex gap-2 text-sm text-slate-300">
+                                {blog.frontmatter.tags.map(
+                                    (tag: any, idx: React.Key) => (
+                                        <div key={idx}>{tag}</div>
+                                    ),
+                                )}
+                            </div>
+                            <div className="grow text-end text-sm text-slate-300">
+                                {blog.frontmatter.author}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default BlogPage;
+```
+
+This code takes blogs as args and renders them on the page and we have added the Link to individual blog pages.
+
+## creating blog page
+
+Next create a **blog/[slug]/page.tsx** in app folder and add the following contents
+
+```tsx
+import Blog from "@/components/blog";
+import { getBlog, getBlogs } from "@/utils/blogs";
+
+export async function generateStaticParams() {
+    let blogs = await getBlogs();
+
+    return blogs.map((blog) => ({
+        slug: blog.frontmatter.slug,
+    }));
+}
+
+const page = async ({ params }: { params: { slug: string } }) => {
+    let blog = await getBlog(params.slug);
+    return <Blog blog={blog} />;
+};
+
+export default page;
+```
+
+The **Blog** component will be created later in this tutorial. The [slug] in the file name is a dynamic route, which means that it will match any route that starts with /blog/ and ends with a string. For example, /blog/hello-world will match this route.
+
+As you see we have a **getBlog** function in the code, we'll create that function in the utils/blogs.ts file
+
+````ts
+export const getBlog = async (slug: string) => {
+    let content = await fs.readFile(`content/blogs/${slug}.mdx`, "utf-8");
+
+    let headingsContent = content;
+    const codeBlockRegex = /```[\s\S]*?```/g;
+    headingsContent = headingsContent.replace(codeBlockRegex, "");
+
+    const regex = /^(#+)\s+(.+)/gm;
+    const headings = [];
+    let match;
+
+    while ((match = regex.exec(headingsContent)) !== null) {
+        const level = match[1].length; // Calculate the heading level based on the number of '#'
+        const title = match[2].trim(); // Trim any leading/trailing whitespace
+        headings.push({ level, title });
+    }
+
+    let parsed = await serialize(content, {
+        parseFrontmatter: true,
+        mdxOptions: {
+            rehypePlugins: [rehypeSlug],
+            remarkPlugins: [remarkGFM],
+        },
+    });
+    parsed.frontmatter.headings = headings;
+    return parsed;
+};
+````
+
+This code will read the file and parse it using next-mdx-remote and return it as an object, it is similar to the getBlogs function but it also parses the headings in the blog post and returns them as an array of objects
+
+Now let's create the Blog component in the components folder
+
+```tsx
+"use client";
+import React from "react";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote";
+import Highlight from "react-syntax-highlighter";
+import oneDark from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-dark";
+import { format, parseISO } from "date-fns";
+import Link from "next/link";
+
+const components = {
+    pre: (props: any) => <div {...props} />,
+    code: ({ children, className }: any) => {
+        const language = className.replace(/language-/, "");
+        return (
+            <Highlight style={oneDark} language={language}>
+                {children}
+            </Highlight>
+        );
+    },
+};
+
+const blog = ({
+    blog,
+}: {
+    blog: MDXRemoteSerializeResult<
+        Record<string, unknown>,
+        Record<string, unknown>
+    >;
+}) => {
+    const handleScrollToHeading = (
+        event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    ) => {
+        event.preventDefault();
+        let href = event.currentTarget.href;
+        let targetId = href.replace(/.*\#/, "");
+        const element = document.getElementById(targetId);
+        element?.scrollIntoView({ behavior: "smooth" });
+    };
+    return (
+        <div className="min-h-screen w-full">
+            <Link className="sticky top-10 left-10" href="/">
+                <button className="text-white px-4 py-2 hover:bg-slate-700 duration-150 bg-slate-800 rounded-lg mx-5 text-xl">
+                    go back
+                </button>
+            </Link>
+            <div className="flex flex-col gap-3 h-full w-3/5 mx-auto py-8">
+                <div className="text-4xl font-bold tracking-tighter">
+                    {blog.frontmatter.title}
+                </div>
+                <div className="flex text-slate-700 font-light">
+                    <div className="grow">
+                        {format(
+                            parseISO(blog.frontmatter.posted_at as any),
+                            "LLLL d, yyyy",
+                        )}
+                    </div>
+                    <div>{blog.frontmatter.author}</div>
+                </div>
+                <div className="text-xl font-normal">
+                    {blog.frontmatter.description}
+                </div>
+                <div className="flex flex-col gap-2">
+                    <div className="text-2xl font-bold">Contents</div>
+                    <div className="w-full h-auto">
+                        {
+                            // @ts-ignore
+                            blog.frontmatter.headings.map(
+                                (
+                                    heading: {
+                                        title: string;
+                                        level: number;
+                                    },
+                                    idx: React.Key | undefined,
+                                ) => (
+                                    <a
+                                        href={`#${heading.title
+                                            .toLowerCase()
+                                            .replace(/\s/g, "-")}`}
+                                        onClick={handleScrollToHeading}
+                                        key={idx}
+                                        className={`flex justify-start items-center gap-3 text-xl font-normal text-blue-400 hover:underline hover:text-blue-300 cursor-pointer duration-150
+                                                    ${
+                                                        heading.level == 2
+                                                            ? "pl-8"
+                                                            : heading.level == 3
+                                                            ? "pl-16"
+                                                            : ""
+                                                    }
+                                                    `}
+                                    >
+                                        {heading.title}
+                                    </a>
+                                ),
+                            )
+                        }
+                    </div>
+                </div>
+                <div className="py-10 prose">
+                    <MDXRemote {...blog} components={components} />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default blog;
+```
+
+In this code, we get blog as an arg and render it on the page, we have also added a go back button to go back to the homepage. The MDXRemote component is used to render the blog post and the components object is used to render the code blocks in the blog post. We have also added a table of contents to the blog post. You can look into its code, we just get the headings from the blog post using regex and assign them levels and render them as links.
+
+Let's get a preview of the homepage and the blog page
+
+<img src="/blog_assets/making-a-blog-using-nextjs/blog_home_page_preview.jpg" />
+<img src="/blog_assets/making-a-blog-using-nextjs/blog_blog_page_preview.jpg" />
+
+# conclusion
+
+We have finally made a basic blog site using NextJS, we haven't focussed much on styling. I hope you liked this blog. Don't forget to share this to your friend!
