@@ -61,7 +61,7 @@ const BlogCard = ({ blog }: { blog: any }) => {
                         alt={"alt"}
                         style={
                             {
-                                "clip-path":
+                                clipPath:
                                     "polygon(0 0, 100% 0, 100% 100%, 20% 100%)",
                             } as React.CSSProperties
                         }

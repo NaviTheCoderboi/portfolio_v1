@@ -30,7 +30,7 @@ export const getBlog = async (slug: string) => {
     headingsContent = headingsContent.replace(codeBlockRegex, "");
 
     const regex = /^(#+)\s+(.+)/gm;
-    const headings = [];
+    let headings = [];
     let match;
 
     while ((match = regex.exec(headingsContent)) !== null) {
