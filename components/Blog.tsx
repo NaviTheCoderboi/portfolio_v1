@@ -54,6 +54,14 @@ const Blog = ({
         const element = document.getElementById(targetId);
         element?.scrollIntoView({ behavior: "smooth" });
     };
+
+    const [date, setDate] = React.useState<string>("");
+
+    React.useEffect(() => {
+        setDate(
+            format(parseISO(blog.frontmatter.posted_at as any), "LLLL d, yyyy"),
+        );
+    }, [blog.frontmatter.posted_at]);
     return (
         <div className="min-h-screen w-full">
             <div className="w-4/5 md:w-[65%] h-full mx-auto mt-44 px-2 grid grid-cols-1 gap-20 sm:gap-12 lg:grid-cols-12 grid-flow-row lg:grid-flow-col">
@@ -142,12 +150,7 @@ const Blog = ({
                             <div className="flex gap-3 justify-start items-center">
                                 <SlCalender className="text-2xl text-pink-500" />
                                 <div className="text-xl text-white font-normal">
-                                    {format(
-                                        parseISO(
-                                            blog.frontmatter.posted_at as any,
-                                        ),
-                                        "LLLL d, yyyy",
-                                    )}
+                                    {date}
                                 </div>
                             </div>
                         </div>
