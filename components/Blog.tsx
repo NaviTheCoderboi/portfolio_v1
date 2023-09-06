@@ -33,18 +33,6 @@ const Blog = ({
         Record<string, unknown>
     >;
 }) => {
-    const getRandomBg = () => {
-        let colors = [
-            "bg-blue-500",
-            "bg-green-500",
-            "bg-yellow-500",
-            "bg-violet-500",
-            "bg-pink-500",
-        ];
-        let random = Math.floor(Math.random() * colors.length);
-        return colors[random];
-    };
-
     const handleScrollToHeading = (
         event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     ) => {
@@ -138,7 +126,7 @@ const Blog = ({
                                     blog.frontmatter.tags.map((tag: string) => (
                                         <div
                                             key={tag}
-                                            className={`px-2 py-1 text-white rounded-full text-base font-medium ${getRandomBg()}`}
+                                            className="px-2 py-1 text-white rounded-full text-base font-medium bg-pink-500"
                                         >
                                             {tag}
                                         </div>
